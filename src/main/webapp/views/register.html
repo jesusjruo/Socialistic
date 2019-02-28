@@ -3,33 +3,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/jquery/jquery-3.3.1.min.js"></script>
     <title>Registration</title>
 </head>
 <body>
 
-    <p>Esta es la pagina de registro</p> <br>
+    <h1>Sign up</h1>
 
-    <p>Probando comunicacion con el servidor.</p>
+    <div>
+        <form enctype='application/json' id="registerForm">
+        <p>Name:</p><input name="name" type="text" class="validate">
+        <p>Last Name:</p><input name="last_name" type="text" class="validate">
+        <p>Email:</p><input name="email" type="email" class="validate">
+        <p>Username:</p><input name="username" type="text" class="validate">
+        <p>Password:</p><input name="password" type="password" class="validate">
+        <p>Repeat Password:</p><input name="checkpassword" type="password" class="validate">
+        <p>Birthday:</p><input name="birthday" type="date" class="validate">
+        <p>Gender:</p>
+        <input type="radio" name="gender" value="1">Male<br>
+        <input type="radio" name="gender" value="2">Female<br>
+        <input type="radio" name="gender" value="3">Undefined<br>
+        <input type="radio" name="gender" value="4">Other
+        </form>
+    </div>
 
-    <p>Enviar un simple mensaje y recibir la respuesta</p>
-
-    <button id="primero">Enviar</button>
+    <div>
+        <button onclick="register()" class="btn">Register</button>
+    </div>
+    <div>
+        <p>Already an user? <a href="login.html">Sing in!</a></p>
+    </div>
     
-<script>
-
-    function $(id) {
-    return document.getElementById(id);
-    }
-
-    function primerEjemplo(){
-
-        fetch("./registration") 
-
-    }
-
-
-
-</script>    
+<script src="../js/fetch.js"></script>
+<script src="../js/register.js"></script>    
 
 </body>
 </html>
