@@ -12,24 +12,26 @@
 
     <div>
         <form enctype='application/json' id="registerForm">
-        <p>Name:</p><input name="name" type="text" class="validate">
-        <p>Last Name:</p><input name="last_name" type="text" class="validate">
-        <p>Email:</p><input name="email" type="email" class="validate">
-        <p>Username:</p><input name="username" type="text" class="validate">
-        <p>Password:</p><input name="password" type="password" class="validate">
-        <p>Repeat Password:</p><input name="checkpassword" type="password" class="validate">
-        <p>Birthday:</p><input name="birthday" type="date" class="validate">
+
+        <p>Name:</p><input name="name" type="text" class="validate" required>
+        <p>Last Name:</p><input name="lastName" type="text" class="validate" required>
+        <p>Email:</p><input name="email" type="email" class="validate" required>
+        <p>Username:</p><input name="username" type="text" class="validate" required>
+        <p>Password:</p><input name="password" type="password" class="validate" required>
+        <p>Birthday:</p><input name="birthday" type="date" class="validate" required>
         <p>Gender:</p>
-        <input type="radio" name="gender" value="1">Male<br>
-        <input type="radio" name="gender" value="2">Female<br>
-        <input type="radio" name="gender" value="3">Undefined<br>
-        <input type="radio" name="gender" value="4">Other
+        <input type="radio" name="gender" value="male" required>Male<br>
+        <input type="radio" name="gender" value="female" required>Female<br>
+        <input type="radio" name="gender" value="undefined" required>Undefined<br>
+        <input type="radio" name="gender" value="other" required>Other
         </form>
+
     </div>
 
     <div>
-        <button onclick="register()" class="btn">Register</button>
+        <button onclick="register()"class="btn">Register</button>
     </div>
+    
     <div>
         <p>Already an user? <a href="login.html">Sing in!</a></p>
     </div>

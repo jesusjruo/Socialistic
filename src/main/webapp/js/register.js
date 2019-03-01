@@ -1,7 +1,11 @@
+console.log("mostrando mensaje");
+
 function register(){
-    let json = $("#registerform").serialize();
+    console.log("mostrando mensaje");
+    let json = $("#registerForm").serialize();
+    console.log("mostrando mensaje");
     console.log(json);
-    request(json, 'POST', '/registration')
+    request(json, 'POST', '/Socialistic/registration')
     .then(function(response){
         if(response.status === 200){
             alert("Te has registrado correctamente");

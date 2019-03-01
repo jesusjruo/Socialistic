@@ -29,6 +29,7 @@ function request(data, method, url) {
                             'Content-type': 'application/x-www-form-urlencoded'
                         }
                     };
+                    console.log(datajson);
                     fetch(url, datajson)
                     .then((res) => res.json())
                     .then((data) => {

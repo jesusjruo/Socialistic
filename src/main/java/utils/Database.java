@@ -14,6 +14,18 @@ public class Database {
     private PreparedStatement pstmt;
     private Connection con;
     private PropertiesReader prop = PropertiesReader.getInstance();
+    public static Database instance;
+
+    public static Database getInstance() {
+        if(instance == null) {
+            instance = new Database();
+        }
+        return instance;
+    }
+
+    public Connection getConnection() {
+        return con;
+    }
 
     public Database(){
         try {
