@@ -1,12 +1,13 @@
 package data;
 
-
 import utils.Database;
 import utils.PropertiesReader;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import static utils.HashPassword.hashPassword;
 
 public class DataUser {
 
@@ -55,22 +56,22 @@ public class DataUser {
         return flag;
     }
 
-    public boolean registerUser(String name, String lastName, String email, String username, String password, String birthday, String gender, String t) {
+    public boolean registerUser(String name, String lastName, String email, String username, String password, String birthday, String gender) {
         PreparedStatement stm = null;
         int rs;
         boolean flag = false;
+        java.sql.Date b = java.sql.Date.valueOf(birthday);
         try {
             System.out.println(props.getValue("registerUser"));
+            System.out.println(hashPassword(password));
             stm = con.prepareStatement(props.getValue("registerUser"));
-            System.out.println(password);
             stm.setString(1, name);
             stm.setString(2, lastName);
             stm.setString(3, email);
             stm.setString(4, username);
-            stm.setString(5, password);
-            stm.setString(6, birthday);
+            stm.setString(5, hashPassword(password));
+            stm.setDate(6, b);
             stm.setString(7, gender);
-            stm.setString(8, t);
             rs = stm.executeUpdate();
             if (rs > 0) {
                 flag = true;

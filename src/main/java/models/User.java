@@ -8,10 +8,10 @@ public class User {
     private String lastname;
     private String email;
     private String birthday;
-    private String creation_time;
+    //private String creation_time;
     private String avatar;
     private String user_sex;
-    private boolean enabled;
+    //private boolean enabled;
 
 
     public String getUsername() {
@@ -48,21 +48,24 @@ public class User {
     }
 
     public String getBirthday() {
-        return birthday;
+        return String.valueOf(birthday);
     }
     public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    /*public String getAvatar() {
+    public String getAvatar() {
         return avatar;
-    }public void setAvatar(String avatar) {
+    }
+
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }*/
+    }
 
     public String getUser_sex() {
         return user_sex;
     }
+
     public void setUser_sex(String user_sex) {
         this.user_sex = user_sex;
     }

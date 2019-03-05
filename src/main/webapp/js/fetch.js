@@ -22,7 +22,7 @@ function request(data, method, url) {
                     console.log('posting')
                     let datajson = {
                         method: 'POST',
-                        body: data,
+                        body: JSON.stringify(data),
                         withCredentials: true,
                         credentials: 'same-origin',
                         headers: {
