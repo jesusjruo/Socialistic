@@ -57,7 +57,7 @@ public class DataPost {
                     p.setText(rs.getString("post_text"));
                     p.setUrl(rs.getString("post_url"));
                     p.setTypeId(Integer.parseInt(rs.getString("type_post_id")));
-                    p.setTimestamp(rs.getString("manga_creation_time"));
+                    p.setTimestamp(rs.getString("post_creation_time"));
                     p.setUserId(Integer.parseInt(rs.getString("user_id")));
                     posts.add(p);
                 }

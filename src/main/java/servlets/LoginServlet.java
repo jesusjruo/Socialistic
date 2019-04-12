@@ -5,6 +5,7 @@ import data.DataUser;
 import models.Response;
 import models.User;
 import org.json.JSONException;
+import utils.Mapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -24,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 
         ObjectMapper ojm = new ObjectMapper();
         User uLogin = ojm.readValue(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())), User.class);
-        HttpSession ses = request.getSession(false);
+        HttpSession ses = request.getSession(true);
         Response res = new Response();
         DataUser du = new DataUser();
 
@@ -38,6 +41,8 @@ public class LoginServlet extends HttpServlet {
             if (du.authorization(username , password)) {
                 res.setMessage("Signed in succesfully!");
                 res.setStatus(200);
+                String infoUser = ojm.writeValueAsString(u);
+                System.out.println(infoUser);
                 ses.setAttribute("user", u);
                 ses.setAttribute("check", true);
             } else {
@@ -50,12 +55,16 @@ public class LoginServlet extends HttpServlet {
                 res.setStatus(500);
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
+
             }catch (JSONException ex1){
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex1);
             }
 
             ex.printStackTrace();
         }
+
+        String r = ojm.writeValueAsString(res);
+        response.getWriter().print(r);
 
     }
 

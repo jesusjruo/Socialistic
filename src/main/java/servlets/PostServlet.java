@@ -24,6 +24,7 @@ public class PostServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        ObjectMapper ojm = new ObjectMapper();
         DataPost dp = new DataPost();
         Mapper reqMapper = new Mapper();
         HashMap jsonMapper = reqMapper.dataToMap(request);
@@ -48,6 +49,9 @@ public class PostServlet extends HttpServlet {
             res.setStatus(500);
             ex.printStackTrace();
         }
+
+        String r = ojm.writeValueAsString(res);
+        response.getWriter().print(r);
     }
 
     @Override

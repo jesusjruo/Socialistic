@@ -60,15 +60,18 @@ public class DataUser {
     }
 
     public boolean authorization(String username , String password) {
+
         PreparedStatement stm = null;
-        boolean flag = true;
-        ResultSet rs = null;
+        boolean flag = false;
+        ResultSet rs;
+
         try {
             String q = this.props.getValue("authorization");
+            System.out.println(props.getValue("authorization"));
             stm = con.prepareStatement(q);
 
             stm.setString(1, username);
-            stm.setString(2, password);
+            stm.setString(2, hashPassword(password));
 
             rs = stm.executeQuery();
 
@@ -81,6 +84,7 @@ public class DataUser {
             return false;
         }
 
+        System.out.println(flag);
         return flag;
     }
 
