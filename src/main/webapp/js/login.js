@@ -1,14 +1,33 @@
-function login() {
-    let json = $("#loginform").serialize();
-    console.log(json);
-    request(json, 'POST', '/login')
-    .then(function(response) {
 
+(function ($) {
+    $.fn.serializeFormJSON = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+})(jQuery);
+
+
+function login() {
+    let json = $("#loginform").serializeFormJSON();
+    console.log(json);
+    request(json, 'POST', '/Socialistic/login')
+    .then(function(response) {
         if(response.status === 200) {
-            alert('Sesion Iniciada.')
+            alert('Session started succesfully!')
             window.location.replace("dashboard.html");
         } else { 
-            alert('Error al iniciar sesion')
+            alert('Something wrong happened')
             console.log(response);
         }
     })

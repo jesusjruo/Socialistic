@@ -18,29 +18,28 @@ console.log("Visualizar proceso del registro en la parte inferior");
     };
 })(jQuery);
 
-function upload(){
+// function upload(){
 
-    function $ (id) {
-        return document.getElementById(id);
-    }
+//     function $ (id) {
+//         return document.getElementById(id);
+//     }
 
-    var formData = new FormData();
-    formData.append("file", $("file").files[0]);
-    myFile = $("file").files[0].name;
+//     var formData = new FormData();
+//     formData.append("file", $("file").files[0]);
+//     myFile = $("file").files[0].name;
 
-    request(formData, 'POST', '/Socialistic/setAvatarServlet')
-    .then(function(response){
-        if(response.status === 200){
-            alert("Profile image uploaded succesfully");
-            $("uploadStatus").textContent = "\nFile uploaded";
-        }else{
-            alert("Error uploading your profile image");
-            console.log(response);
-        }
-    }).catch(function(error){
-        alert(error);
-    })
-}
+//     request(formData, 'POST', '/Socialistic/setAvatarServlet')
+//     .then(function(response){
+//         if(response.status === 200){
+//             alert("Profile image uploaded succesfully");
+//         }else{
+//             alert("Error uploading your profile image");
+//             console.log(response);
+//         }
+//     }).catch(function(error){
+//         alert(error);
+//     })
+// }
 
 function register() {
     const json = $("#registerForm").serializeFormJSON();
@@ -48,8 +47,8 @@ function register() {
     .then(function(response){
         if(response.status === 200){
             alert("Registration Succesfull!");
-            alert("Proceed to log in");
-            window.location.replace("login.html")
+            alert("Proceed to set a profile avatar");
+            window.location.replace("avatar.html")
         }else{
             alert("Something went wrong");
             console.log(response);

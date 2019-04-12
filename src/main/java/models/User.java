@@ -1,7 +1,11 @@
 package models;
 
+import javax.servlet.http.Part;
+import java.io.InputStream;
+
 public class User {
 
+    private int id;
     private String username;
     private String password;
     private String name;
@@ -9,10 +13,13 @@ public class User {
     private String email;
     private String birthday;
     //private String creation_time;
-    private String avatar;
+    private Part avatar;
     private String user_sex;
     //private boolean enabled;
 
+
+    public int getId() {return id; }
+    public void setId(int id) {this.id = id; }
 
     public String getUsername() {
         return username;
@@ -54,11 +61,11 @@ public class User {
         this.birthday = birthday;
     }
 
-    public String getAvatar() {
+    public  Part getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(Part avatar) {
         this.avatar = avatar;
     }
 
@@ -68,6 +75,9 @@ public class User {
 
     public void setUser_sex(String user_sex) {
         this.user_sex = user_sex;
+    }
+
+    public void setTimestamp(String user_created_at) {
     }
 
     /*public boolean isEnabled() {return enabled; }
