@@ -12,10 +12,8 @@ public class User {
     private String lastname;
     private String email;
     private String birthday;
-    //private String creation_time;
     private Part avatar;
     private String user_sex;
-    //private boolean enabled;
 
 
     public int getId() {return id; }

@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/jquery/jquery-3.3.1.min.js"></script>
+    <title>Make a Post</title>
+</head>
+<body>
+    <h1>What's Happenning?</h1>
+    <div>
+        <form id="postform">
+            <p>What kind of post do you want to upload?</p>
+            <input type="radio" name="post" value="tweet" required>Tweet<br>
+            <input type="radio" name="post" value="media" required>Media<br>
+            <p>Where do you want your post to be found?</p>
+            <input type="text" name="url" required>
+            <p>Say Something!</p>
+            <input type="text" name="post" required>
+        </form>
+    </div>
+    <br>
+    <div>
+        <button onclick="post()">Upload Post</button><br><br>
+    </div>
+    <div>
+        <button><a href="./dashboard.html">Go back to your dashboard</a></button><br><br> 
+    </div>
+    <br>
+
+    <script src="../js/post.js"></script>
+    <script src="../js/fetch.js"></script>
+
+</body>
+</html>

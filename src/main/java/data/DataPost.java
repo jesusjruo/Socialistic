@@ -16,13 +16,13 @@ public class DataPost {
     private final Connection con = Database.getInstance().getConnection();
     PropertiesReader props = PropertiesReader.getInstance();
 
-    public Post getPost(String token, String value) throws SQLException {
+    public Post getPost(int userId) throws SQLException {
         PreparedStatement stm = null;
         ResultSet rs = null;
         Post p = new Post();
         try{
-            stm = con.prepareStatement("SELECT * FROM post WHERE " + token + " = ? LIMIT 1");
-            stm.setString(1, value);
+            stm = con.prepareStatement("SELECT * FROM post WHERE " + userId + " = ? LIMIT 1");
+            stm.setString(1, String.valueOf(userId));
             rs = stm.executeQuery();
             if(rs.next()){
                 rs.beforeFirst();
@@ -42,13 +42,13 @@ public class DataPost {
         return p;
     }
 
-    public List<Post> getPosts(String token, int param){
+    public List<Post> getPosts(int userId){
         PreparedStatement stm = null;
         ResultSet rs = null;
         List<Post> posts = new ArrayList<>();
         try{
-            stm = con.prepareStatement("SELECT * FROM post WHERE "+ token + " = ?");
-            stm.setInt(1,param);
+            stm = con.prepareStatement(props.getValue("getOwnPosts"));
+            stm.setInt(1,userId);
             if(rs.next()){
                 rs.beforeFirst();
                 while(rs.next()){
@@ -77,6 +77,7 @@ public class DataPost {
         boolean flag = false;
         try{
             stm = con.prepareStatement(props.getValue("registerPost"));
+            System.out.println(props.getValue("registerPost"));
             stm.setInt(1, userId );
             stm.setString(2, text);
             stm.setString(3, url);
@@ -94,7 +95,7 @@ public class DataPost {
         return flag;
     }
 
-    public boolean postExists(int postId) {
+    public boolean postExists(int postId , int userId) {
         PreparedStatement stm = null;
         boolean flag = true;
         ResultSet rs = null;
@@ -139,7 +140,7 @@ public class DataPost {
         return flag;
     }
 
-    public boolean deletePost(int postId) {
+    public boolean deletePost(int userId , int postId) {
         PreparedStatement stm = null;
         int rs;
         boolean flag = false;

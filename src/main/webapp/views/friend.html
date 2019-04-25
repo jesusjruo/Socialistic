@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/jquery/jquery-3.3.1.min.js"></script>
+    <title>Friends</title>
+</head>
+<body>
+
+    <h1>Add a friend</h1>
+    <form id="friendform">
+        <p>Type an username:</p><input name="username" type="text" class="validate" required>
+    </form>
+
+    <div>
+        <button onclick = "addFriend()" class="btn">Add friend</button><br><br>
+    </div>
+
+    <div>
+        <button><a href="./dashboard.html">Go back to your dashboard</a></button><br><br> 
+    </div>
+    
+    <script src="../js/friend.js"></script>
+    <script src="../js/fetch.js"></script>
+
+</body>
+</html>

@@ -109,6 +109,27 @@ public class DataUser {
         return flag;
     }
 
+    public boolean userExists(int id) {
+        PreparedStatement stm = null;
+        boolean flag = true;
+        ResultSet rs = null;
+        try {
+            String q = this.props.getValue("checkUser");
+            stm = con.prepareStatement(q);
+            stm.setInt(1, id);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+        } catch (Exception ex) {
+            return false;
+        }
+
+        return flag;
+    }
+
     public boolean emailExists(String email) {
         PreparedStatement stm = null;
         boolean flag = true;
