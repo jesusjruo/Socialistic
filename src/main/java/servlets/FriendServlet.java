@@ -30,12 +30,18 @@ public class FriendServlet extends HttpServlet {
             String friendUsername = addFriend.getUsername();
 
             if(du.usernameExists(friendUsername)){
-                if(df.registerFriend(u.getId(), friendUsername)){
-                    res.setMessage("Friend added succesfully!");
-                    res.setStatus(200);
+
+                if(df.friendshipExists(u.getId() , friendUsername)){
+                    res.setMessage("Friend already added");
+                    res.setStatus(401);
                 }else{
-                    res.setMessage("Internal error");
-                    res.setStatus(500);
+                    if(df.registerFriend(u.getId(), friendUsername)){
+                        res.setMessage("Friend added succesfully!");
+                        res.setStatus(200);
+                    }else{
+                        res.setMessage("Internal error");
+                        res.setStatus(500);
+                    }
                 }
             }else{
                 res.setMessage("Username not found");
